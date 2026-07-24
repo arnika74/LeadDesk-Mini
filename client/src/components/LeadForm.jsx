@@ -22,7 +22,7 @@ const leadSchema = z.object({
 })
 
 const fieldClass =
-  'mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20'
+  'mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-3 text-base text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20'
 
 export default function LeadForm() {
   const { success, error } = useToast()
@@ -58,11 +58,11 @@ export default function LeadForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+      className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm lg:p-8"
       noValidate
     >
       <div>
-        <label htmlFor="name" className="text-sm font-medium text-slate-800">
+        <label htmlFor="name" className="text-base font-medium text-slate-800">
           Name
         </label>
         <input
@@ -74,14 +74,14 @@ export default function LeadForm() {
           {...register('name')}
         />
         {errors.name ? (
-          <p className="mt-1 text-sm text-rose-600" role="alert">
+          <p className="mt-1.5 text-sm text-rose-600" role="alert">
             {errors.name.message}
           </p>
         ) : null}
       </div>
 
       <div>
-        <label htmlFor="email" className="text-sm font-medium text-slate-800">
+        <label htmlFor="email" className="text-base font-medium text-slate-800">
           Email
         </label>
         <input
@@ -93,14 +93,14 @@ export default function LeadForm() {
           {...register('email')}
         />
         {errors.email ? (
-          <p className="mt-1 text-sm text-rose-600" role="alert">
+          <p className="mt-1.5 text-sm text-rose-600" role="alert">
             {errors.email.message}
           </p>
         ) : null}
       </div>
 
       <div>
-        <label htmlFor="budget" className="text-sm font-medium text-slate-800">
+        <label htmlFor="budget" className="text-base font-medium text-slate-800">
           Budget range
         </label>
         <select
@@ -117,14 +117,14 @@ export default function LeadForm() {
           ))}
         </select>
         {errors.budget ? (
-          <p className="mt-1 text-sm text-rose-600" role="alert">
+          <p className="mt-1.5 text-sm text-rose-600" role="alert">
             {errors.budget.message}
           </p>
         ) : null}
       </div>
 
       <div>
-        <label htmlFor="message" className="text-sm font-medium text-slate-800">
+        <label htmlFor="message" className="text-base font-medium text-slate-800">
           Message
         </label>
         <textarea
@@ -135,13 +135,13 @@ export default function LeadForm() {
           {...register('message')}
         />
         {errors.message ? (
-          <p className="mt-1 text-sm text-rose-600" role="alert">
+          <p className="mt-1.5 text-sm text-rose-600" role="alert">
             {errors.message.message}
           </p>
         ) : null}
       </div>
 
-      <Button type="submit" loading={isSubmitting} className="w-full sm:w-auto">
+      <Button type="submit" loading={isSubmitting} className="w-full px-6 py-3 text-base sm:w-auto">
         Submit lead
       </Button>
     </form>

@@ -8,7 +8,7 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-slate-100">
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-10">
           <div>
             <Link to="/admin" className="text-lg font-semibold text-slate-900">
               LeadDesk Admin
@@ -28,7 +28,7 @@ export default function AdminLayout() {
           </div>
         </div>
       </header>
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <main className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 lg:px-10">
         <Outlet />
       </main>
     </div>

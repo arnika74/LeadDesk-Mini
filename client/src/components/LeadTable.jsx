@@ -8,7 +8,7 @@ export default function LeadTable({ leads, onStatusChange, updatingId }) {
     return (
       <EmptyState
         title="No leads found"
-        description="Try a different search, or wait for new submissions."
+        description="Try a different search or status filter, or wait for new submissions."
       />
     )
   }
@@ -24,14 +24,17 @@ export default function LeadTable({ leads, onStatusChange, updatingId }) {
             <th scope="col" className="px-4 py-3 font-medium">
               Email
             </th>
-            <th scope="col" className="px-4 py-3 font-medium">
+            <th scope="col" className="hidden px-4 py-3 font-medium md:table-cell">
               Budget
+            </th>
+            <th scope="col" className="hidden px-4 py-3 font-medium lg:table-cell">
+              Message
             </th>
             <th scope="col" className="px-4 py-3 font-medium">
               Status
             </th>
-            <th scope="col" className="px-4 py-3 font-medium">
-              Created
+            <th scope="col" className="hidden px-4 py-3 font-medium sm:table-cell">
+              Updated
             </th>
           </tr>
         </thead>
@@ -40,7 +43,15 @@ export default function LeadTable({ leads, onStatusChange, updatingId }) {
             <tr key={lead.id} className="border-b border-slate-100 last:border-0">
               <td className="px-4 py-3 font-medium text-slate-900">{lead.name}</td>
               <td className="px-4 py-3 text-slate-600">{lead.email}</td>
-              <td className="px-4 py-3 text-slate-600">{lead.budget}</td>
+              <td className="hidden px-4 py-3 text-slate-600 md:table-cell">
+                {lead.budget}
+              </td>
+              <td
+                className="hidden max-w-xs truncate px-4 py-3 text-slate-600 lg:table-cell"
+                title={lead.message}
+              >
+                {lead.message}
+              </td>
               <td className="px-4 py-3">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                   <StatusBadge status={lead.status} />
@@ -51,8 +62,9 @@ export default function LeadTable({ leads, onStatusChange, updatingId }) {
                     id={`status-${lead.id}`}
                     value={lead.status}
                     disabled={updatingId === lead.id}
+                    aria-busy={updatingId === lead.id}
                     onChange={(e) => onStatusChange(lead.id, e.target.value)}
-                    className="rounded-md border border-slate-300 bg-white px-2 py-1 text-xs focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20"
+                    className="rounded-md border border-slate-300 bg-white px-2 py-1 text-xs focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20 disabled:opacity-60"
                   >
                     {LEAD_STATUSES.map((status) => (
                       <option key={status} value={status}>
@@ -62,7 +74,9 @@ export default function LeadTable({ leads, onStatusChange, updatingId }) {
                   </select>
                 </div>
               </td>
-              <td className="px-4 py-3 text-slate-600">{formatDate(lead.createdAt)}</td>
+              <td className="hidden px-4 py-3 text-slate-600 sm:table-cell">
+                {formatDate(lead.updatedAt)}
+              </td>
             </tr>
           ))}
         </tbody>

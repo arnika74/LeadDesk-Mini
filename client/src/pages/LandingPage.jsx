@@ -22,14 +22,16 @@ export default function LandingPage() {
     <>
       <Hero />
 
-      <section id="features" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Features</h2>
-          <p className="mt-3 text-slate-600">
+      <section id="features" className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 lg:text-4xl">
+            Features
+          </h2>
+          <p className="mt-3 text-base text-slate-600 lg:text-lg">
             Everything you need for a professional lead capture workflow — nothing you don’t.
           </p>
         </div>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {features.map((feature) => (
             <FeatureCard key={feature.title} {...feature} />
           ))}
@@ -37,37 +39,39 @@ export default function LandingPage() {
       </section>
 
       <section id="about" className="border-y border-slate-200/80 bg-white/60">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">About</h2>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600">
+        <div className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 lg:text-4xl">
+            About
+          </h2>
+          <p className="mt-3 max-w-4xl text-base leading-relaxed text-slate-600 lg:text-lg">
             LeadDesk Mini is a production-minded training build: public capture, secure admin,
             real PostgreSQL storage, and deployment-ready architecture.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="rounded-3xl bg-slate-900 px-6 py-12 text-white sm:px-10">
-          <h2 className="text-3xl font-semibold tracking-tight">Ready to talk?</h2>
-          <p className="mt-3 max-w-xl text-slate-300">
+      <section className="mx-auto max-w-[1400px] px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+        <div className="rounded-3xl bg-slate-900 px-6 py-10 text-white sm:px-10 lg:px-12 lg:py-12">
+          <h2 className="text-3xl font-semibold tracking-tight lg:text-4xl">Ready to talk?</h2>
+          <p className="mt-3 max-w-3xl text-base text-slate-300 lg:text-lg">
             Tell us your budget range and goals. We’ll follow up with next steps.
           </p>
           <a
             href="#contact"
-            className="mt-6 inline-flex rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-medium text-slate-950 hover:bg-teal-400"
+            className="mt-6 inline-flex rounded-lg bg-teal-500 px-6 py-3 text-base font-medium text-slate-950 hover:bg-teal-400"
           >
             Open the form
           </a>
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900">
+      <section id="contact" className="mx-auto max-w-[1400px] px-4 pb-14 sm:px-6 lg:px-10 lg:pb-16">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
+          <div className="max-w-xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 lg:text-4xl">
               Lead form
             </h2>
-            <p className="mt-3 text-slate-600">
+            <p className="mt-3 text-base text-slate-600 lg:text-lg">
               Share a few details and we’ll route your request into the admin desk.
             </p>
           </div>

@@ -2,16 +2,25 @@
 
 Full-stack lead capture application built for the Digital Heroes Training Task.
 
-> Footer credit (required): [Built for Digital Heroes Training Task](https://digitalheroesco.com)
+> [Built for Digital Heroes Training Task](https://digitalheroesco.com)
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|------------|
 | Frontend | React (Vite), Tailwind CSS, React Router, Axios, React Hook Form, Zod |
-| Backend | Node.js, Express, JWT, bcrypt, express-validator |
+| Backend | Node.js, Express, JWT, bcrypt, express-validator, helmet, rate limiting |
 | Database | PostgreSQL (Neon) + Prisma ORM |
 | Deploy | Frontend → Vercel, Backend → Render |
+
+## Features
+
+- Public SaaS landing page with validated lead form
+- JWT admin authentication (bcrypt-hashed passwords)
+- Admin dashboard: stats, search, status filter, pagination, status updates
+- Client + server validation
+- Toast notifications, loading and empty states
+- Rate limiting on login and lead submission
 
 ## Project Structure
 
@@ -27,7 +36,7 @@ LeadDesk-Mini/
 
 - Node.js 18+
 - npm
-- Neon PostgreSQL database (configured in Milestone 2)
+- Neon PostgreSQL database
 
 ### 1. Clone
 
@@ -42,7 +51,13 @@ cd LeadDesk-Mini
 cd server
 npm install
 cp .env.example .env
-# Fill in DATABASE_URL, JWT_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD
+```
+
+Fill in `server/.env`, then:
+
+```bash
+npx prisma migrate dev
+npx prisma db seed
 npm run dev
 ```
 
@@ -61,18 +76,56 @@ App: `http://localhost:5173`
 
 ## Environment Variables
 
-Documented fully after Milestone 2 (database) and Milestone 9 (deployment).
+### Server (`server/.env`)
 
-See `server/.env.example` and `client/.env.example`.
+| Variable | Purpose |
+|----------|---------|
+| `PORT` | API port (default `5000`) |
+| `DATABASE_URL` | Neon PostgreSQL connection string |
+| `JWT_SECRET` | Signs JWT tokens (32+ characters recommended) |
+| `JWT_EXPIRES_IN` | Token lifetime (e.g. `1d`) |
+| `ADMIN_EMAIL` | Seed admin email |
+| `ADMIN_PASSWORD` | Seed admin password (hashed with bcrypt) |
+| `CLIENT_URL` | Allowed CORS origin (Vite URL or Vercel URL) |
+| `NODE_ENV` | `development` or `production` |
+
+### Client (`client/.env`)
+
+| Variable | Purpose |
+|----------|---------|
+| `VITE_API_URL` | Backend API base URL (e.g. `http://localhost:5000/api`) |
+
+## API Overview
+
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| `GET` | `/api/health` | No | Health check |
+| `POST` | `/api/leads` | No | Create lead |
+| `POST` | `/api/auth/login` | No | Admin login |
+| `GET` | `/api/admin/stats` | Bearer | Dashboard stats |
+| `GET` | `/api/admin/leads` | Bearer | List/search/paginate leads |
+| `PATCH` | `/api/admin/leads/:id` | Bearer | Update lead status |
+
+### Budget ranges
+
+- Less than ₹25,000
+- ₹25,000 – ₹50,000
+- ₹50,000 – ₹1,00,000
+- More than ₹1,00,000
+
+### Lead statuses
+
+`NEW` · `CONTACTED` · `CLOSED`
 
 ## Scripts
 
 **Server**
 
-- `npm run dev` — start API with file watch
-- `npm start` — start API (production)
+- `npm run dev` — API with file watch
+- `npm start` — production start
 - `npm run prisma:migrate` — run migrations
 - `npm run prisma:seed` — seed admin user
+- `npm run test:smoke` — API smoke test (server must be running)
 
 **Client**
 
@@ -82,7 +135,9 @@ See `server/.env.example` and `client/.env.example`.
 
 ## Status
 
-Milestone 1 complete — project scaffolding.
+Milestones 1–8 complete (scaffold → DB → API → auth/admin → frontend → polish).
+
+Deployment (Vercel + Render) and Loom walkthrough are next.
 
 ## Demo
 

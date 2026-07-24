@@ -5,9 +5,15 @@ export const notFound = (_req, res) => {
 }
 
 export const errorHandler = (err, _req, res, _next) => {
-  console.error(err)
-
   const status = err.statusCode || 500
+
+  // Expected client/auth errors: keep logs quiet. Unexpected 500s: full detail.
+  if (status >= 500) {
+    console.error(err)
+  } else if (env.nodeEnv !== 'production') {
+    console.warn(`[${status}] ${err.message}`)
+  }
+
   const isDev = env.nodeEnv !== 'production'
   const message =
     status === 500 && !isDev
