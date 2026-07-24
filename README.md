@@ -2,6 +2,8 @@
 
 Full-stack lead capture application built for the Digital Heroes Training Task.
 
+Loom URL: https://www.loom.com/share/f44ad0bfb6c24c5ea9d9b62272cbb2f4
+
 Live Demo: https://lead-desk-mini-orcin.vercel.app/
 
 Backend API: https://leaddesk-mini-api-9dib.onrender.com
