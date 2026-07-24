@@ -357,7 +357,7 @@ App: `http://localhost:5173`
 | `PATCH` | `/api/admin/leads/:id` | Bearer | Update lead status |
 
 ---
-### Database Design 
+## Database Design 
 ### Budget ranges
 
 - Less than ₹25,000
@@ -385,9 +385,7 @@ App: `http://localhost:5173`
 - `npm run build` — production build
 - `npm run preview` — preview production build
 
----
-
-### Deployment Architecture
+## Deployment Architecture
                 Users
                   │
                   ▼
@@ -403,9 +401,7 @@ App: `http://localhost:5173`
                   ▼
       Neon PostgreSQL Database
 
----
-
-### Challenges Faced
+## Challenges Faced
 
 Examples:
 
@@ -418,9 +414,7 @@ Deployment debugging on Render
 
 Briefly explain how each was resolved.
 
----
-
-### AI Usage
+## AI Usage
 
 This is important because the task asked for it.
 
@@ -428,9 +422,7 @@ Example:
 
 AI tools (Cursor AI and ChatGPT) were used to accelerate development, understand unfamiliar concepts, review architecture decisions, and troubleshoot deployment issues. I reviewed, modified, and tested all generated code manually, made implementation decisions myself (such as choosing PostgreSQL over MongoDB, API structure, UI improvements, and deployment configuration), and verified the application end-to-end before submission.
 
----
-
-### Future Improvements
+## Future Improvements
 
 Email notifications after lead submission
 Role-based authentication
@@ -441,8 +433,7 @@ Dark mode
 Docker support
 Automated testing using Jest
 
----
-### Scripts
+## Scripts
 
 Server
 
@@ -457,9 +448,8 @@ Client
 npm run dev — Vite dev server
 npm run build — production build
 npm run preview — preview production build
----
 
-### Demo
+## Demo
 
 ADMIN
 EMAIL=admin@leaddesk.local
