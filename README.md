@@ -60,8 +60,6 @@ Before writing any code, I analyzed the internship requirements and selected a t
 
 The project follows a client-server architecture, making deployment and maintenance easier.
 
----
-
 ### Phase 2 — Project Setup
 
 #### Frontend Setup
@@ -82,8 +80,6 @@ The project follows a client-server architecture, making deployment and maintena
 - Implemented centralized error handling.
 - Added Express Validator for server-side validation.
 - Configured rate limiting to protect public endpoints.
-
----
 
 ### Phase 3 — Database Setup
 
@@ -117,8 +113,6 @@ Steps completed:
 - createdAt
 - updatedAt
 
----
-
 ### Phase 4 — Backend Development
 
 Implemented REST APIs for the complete lead management workflow.
@@ -142,8 +136,6 @@ Security features implemented:
 - Request validation
 - Centralized error handling
 - Rate limiting
-
----
 
 ### Phase 5 — Frontend Development
 
@@ -172,8 +164,6 @@ Additional UI features:
 - Responsive layouts
 - Protected routes
 
----
-
 ### Phase 6 — Production Hardening
 
 Before deployment, the application was improved for production readiness.
@@ -188,8 +178,6 @@ Implemented:
 - Accessibility improvements
 - Cleaner logging
 - API request cancellation to prevent stale updates
-
----
 
 ### Phase 7 — Deployment
 
@@ -210,8 +198,6 @@ The application was deployed using separate services for each layer.
 - Connected frontend with deployed backend
 - Updated backend CORS configuration
 - Verified the application in a fresh browser
-
----
 
 ### Phase 8 — Testing
 
@@ -235,9 +221,7 @@ Verified functionality includes:
 - Protected routes
 - Live deployment on Vercel and Render
 
----
-
-### Key Learnings
+## Key Learnings
 
 Throughout this project, I gained practical experience in:
 
@@ -356,7 +340,6 @@ App: `http://localhost:5173`
 | `GET` | `/api/admin/leads` | Bearer | List/search/paginate leads |
 | `PATCH` | `/api/admin/leads/:id` | Bearer | Update lead status |
 
----
 ## Database Design 
 ### Budget ranges
 
