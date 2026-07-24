@@ -1,12 +1,40 @@
-function App() {
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import { ToastProvider } from './context/ToastContext'
+import PublicLayout from './layouts/PublicLayout'
+import AdminLayout from './layouts/AdminLayout'
+import ProtectedRoute from './components/ProtectedRoute'
+import LandingPage from './pages/LandingPage'
+import LoginPage from './pages/LoginPage'
+import AdminDashboardPage from './pages/AdminDashboardPage'
+
+export default function App() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-slate-50">
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-semibold text-slate-900">LeadDesk Mini</h1>
-        <p className="text-slate-600">Milestone 1 scaffold — frontend is running.</p>
-      </div>
-    </main>
+    <BrowserRouter>
+      <AuthProvider>
+        <ToastProvider>
+          <Routes>
+            <Route element={<PublicLayout />}>
+              <Route path="/" element={<LandingPage />} />
+            </Route>
+
+            <Route path="/admin/login" element={<LoginPage />} />
+
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<AdminDashboardPage />} />
+            </Route>
+
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </ToastProvider>
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
-
-export default App
